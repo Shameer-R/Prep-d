@@ -1,4 +1,5 @@
 import './index.css'
+import placeholder from './imgs/placeholder.png'
 
 function Navbar() {
   return (
@@ -33,11 +34,27 @@ function SearchBar() {
   )
 }
 
+function GroceryCard(prop) {
+  return (
+    <>
+    <div className='grocery-card'>
+      <img src={placeholder}></img>
+      <p>{prop.grocery_name} {prop.quantity}x</p>
+    </div>
+    </>
+  )
+}
+
 export default function App() {
   return (
     <div className='main-container'>
-    <Navbar></Navbar>
-    <SearchBar></SearchBar>
+      <Navbar></Navbar>
+      <SearchBar></SearchBar>
+      <h1>Grocery List:</h1>
+      <div className='grocery-container'>
+       <GroceryCard grocery_name="Apple" quantity="2"></GroceryCard>
+       <GroceryCard grocery_name="Banana" quantity="4"></GroceryCard>
+      </div>
     </div>
   );
 }

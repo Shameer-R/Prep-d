@@ -64,3 +64,29 @@ body {
   border: 1px solid black;
   border-radius: .2rem;
 }
+
+.grocery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.75rem;
+  padding-bottom: 1rem;
+}
+
+.grocery-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border: 1px solid rgb(225, 221, 221);
+  border-radius: 1rem;
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.grocery-card>img {
+  height: 2.75rem;
+  width: 2.75rem;
+  object-fit: contain;
+}
