@@ -1,13 +1,92 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  border-bottom: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style-type: none;
+  flex: 1;
+}
+
+.navbar-list > li {
+   border-bottom: .25px solid black;
+}
+
+.logo {
+  text-align: left;
+  font-weight: bold;
+  flex: 1;
+}
+
+.account-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  align-self: center;
+  flex: 1;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  flex: 1;
+}
+
+.search-container>input {
+  width: 40vw;
+  height: 4vh;
+  border: 1px solid black;
+  border-radius: .2rem;
+}
+
+.grocery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.75rem;
+  padding-bottom: 1rem;
+}
+
+.grocery-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border: 1px solid rgb(225, 221, 221);
+  border-radius: 1rem;
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.grocery-card>img {
+  height: 2.75rem;
+  width: 2.75rem;
+  object-fit: contain;
 }
