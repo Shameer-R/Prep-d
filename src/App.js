@@ -13,6 +13,10 @@ function Navbar() {
       <li>Saved Meals</li>
     </ul>
 
+    <div className='account-actions'>
+       <span>🔔</span>
+       <span>👤</span>
+    </div>
     
   </div>
   </>

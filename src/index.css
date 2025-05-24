@@ -3,17 +3,32 @@
   flex-direction: row;
   list-style-type: none;
   border-bottom: 1px solid black;
+  align-items: center;
   justify-content: space-between;
 }
 
 .navbar-list {
   display: flex;
+  justify-content: center;
   gap: 2rem;
   list-style-type: none;
+  flex: 1;
+}
+
+.navbar-list > li {
+   border-bottom: .25px solid black;
 }
 
 .logo {
-  padding-right: 1rem;
-  text-align: center;
+  text-align: left;
+  font-weight: bold;
+  flex: 1;
+}
+
+.account-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
   align-self: center;
+  flex: 1;
 }
