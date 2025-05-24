@@ -23,10 +23,21 @@ function Navbar() {
   ) 
 }
 
+function SearchBar() {
+  return (
+    <div className='search-container'>
+    
+    <input placeholder='Add groceries...'></input>
+    
+    </div>
+  )
+}
+
 export default function App() {
   return (
-    <>
+    <div className='main-container'>
     <Navbar></Navbar>
-    </>
+    <SearchBar></SearchBar>
+    </div>
   );
 }
