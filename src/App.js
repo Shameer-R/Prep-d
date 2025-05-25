@@ -29,6 +29,8 @@ function SearchBar() {
     <div className='search-container'>
     
     <input placeholder='Add groceries...'></input>
+
+    <button>+</button>
     
     </div>
   )
@@ -38,7 +40,7 @@ function GroceryCard(prop) {
   return (
     <>
     <div className='grocery-card'>
-      <img src={placeholder}></img>
+      <img alt={prop.grocery_name} src={placeholder}></img>
       <p>{prop.grocery_name} {prop.quantity}x</p>
     </div>
     </>
