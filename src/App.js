@@ -1,7 +1,6 @@
 import './index.css'
 import placeholder from './imgs/placeholder.png'
 import { use, useState } from 'react'
-import { createElement } from 'react';
 
 function Navbar() {
   return (
@@ -65,7 +64,28 @@ export default function App() {
   const[groceries, setGroceries] = useState([]);
 
   function handleAddGroceries(item) {
-    setGroceries([...groceries, item]);
+
+    const exists = groceries.some(function(grocery) {
+      return grocery.grocery_name.toLowerCase() == item.grocery_name.toLowerCase();
+    });
+
+    if (!exists) {
+      setGroceries([...groceries, item]);
+    } else {
+      const updatedGroceries = groceries.map(function(grocery) {
+        if (grocery.grocery_name.toLowerCase() == item.grocery_name.toLowerCase()) {
+          return {
+            ...grocery,
+            quantity: grocery.quantity + 1
+          };
+        }
+        return grocery;
+      });
+
+      setGroceries(updatedGroceries);
+    }
+
+    
   }
 
   return (
