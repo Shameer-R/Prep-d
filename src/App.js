@@ -1,5 +1,7 @@
 import './index.css'
 import placeholder from './imgs/placeholder.png'
+import { use, useState } from 'react'
+import { createElement } from 'react';
 
 function Navbar() {
   return (
@@ -24,13 +26,24 @@ function Navbar() {
   ) 
 }
 
-function SearchBar() {
+function SearchBar(props) {
+
+  const [searchVal, setSearchVal] = useState(null);
+
+  function handleSubmit() {
+    if (searchVal.trim() !== '') {
+      props.handleAddGrocery({grocery_name: searchVal, quantity: 1})
+    }
+  }
+
   return (
+
+
     <div className='search-container'>
     
-    <input placeholder='Add groceries...'></input>
+    <input placeholder='Add groceries...' onChange={(e) => setSearchVal(e.target.value)}></input>
 
-    <button>+</button>
+    <button onClick={handleSubmit}>+</button>
     
     </div>
   )
@@ -48,14 +61,30 @@ function GroceryCard(prop) {
 }
 
 export default function App() {
+
+  const[groceries, setGroceries] = useState([]);
+
+  function handleAddGroceries(item) {
+    setGroceries([...groceries, item]);
+  }
+
   return (
     <div className='main-container'>
       <Navbar></Navbar>
-      <SearchBar></SearchBar>
+      <SearchBar handleAddGrocery={handleAddGroceries}></SearchBar>
       <h1>Grocery List:</h1>
       <div className='grocery-container'>
-       <GroceryCard grocery_name="Apple" quantity="2"></GroceryCard>
-       <GroceryCard grocery_name="Banana" quantity="4"></GroceryCard>
+        {
+          groceries.map(function(item, index) {
+            return (
+              <GroceryCard
+                key={item.grocery_name}
+                grocery_name={item.grocery_name}
+                quantity={item.quantity}
+              />
+            );
+          })
+        }
       </div>
     </div>
   );
