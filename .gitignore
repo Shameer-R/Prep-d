@@ -3,6 +3,12 @@ frontend/node_modules/
 frontend/.pnp
 frontend/.pnp.js
 
+# Flask (Python backend)
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+
+
 # === Testing ===
 frontend/coverage/
 
