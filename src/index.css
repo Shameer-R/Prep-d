@@ -5,81 +5,115 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
 }
-
 
 .main-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 1rem;
 }
+
 
 .navbar-container {
   display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  border-bottom: 1px solid black;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  padding: 0 2rem;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  height: 64px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4a90e2;
 }
 
 .navbar-list {
   display: flex;
-  justify-content: center;
   gap: 2rem;
-  list-style-type: none;
-  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar-list > li {
-   border-bottom: .25px solid black;
+  cursor: pointer;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
 }
 
-.logo {
-  text-align: left;
-  font-weight: bold;
-  flex: 1;
+.navbar-list > li:hover {
+  border-color: #4a90e2;
 }
 
 .account-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  align-self: center;
-  flex: 1;
+  gap: 1.5rem;
+  font-size: 1.2rem;
 }
 
+/* Search bar */
 .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
-  flex: 1;
-  gap: .5rem;
+  margin: 2rem 0 1.5rem 0;
+  gap: 0.5rem;
 }
 
-.search-container>input {
+.search-container > input {
   width: 40vw;
-  height: 4vh;
-  border: 1px solid black;
-  border-radius: .2rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  background-color: white;
 }
 
-.search-container>button {
-  height: 4vh;
-  width: 4vh;
-  border-radius: .2rem;
-  font-size: 1rem;
-  border: 1px solid black;
+.search-container > input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 4px rgba(74, 144, 226, 0.3);
+}
+
+.search-container > button {
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1.25rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-container > button:hover {
+  background-color: #357ab7;
+}
+
+/* Grocery Section */
+h1 {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.5rem;
 }
 
 .grocery-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 2.75rem;
-  padding-bottom: 1rem;
+  gap: 2rem;
+  padding-bottom: 2rem;
 }
 
 .grocery-card {
@@ -88,14 +122,23 @@ body {
   justify-content: center;
   text-align: center;
   align-items: center;
-  border: 1px solid rgb(225, 221, 221);
+  background-color: white;
+  border: 1px solid #eee;
   border-radius: 1rem;
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 7rem;
+  height: 7rem;
+  padding: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
 }
 
-.grocery-card>img {
-  height: 2.75rem;
-  width: 2.75rem;
+.grocery-card:hover {
+  transform: translateY(-3px);
+}
+
+.grocery-card > img {
+  height: 3rem;
+  width: 3rem;
   object-fit: contain;
+  margin-bottom: 0.5rem;
 }

@@ -91,6 +91,7 @@ export default function App() {
   return (
     <div className='main-container'>
       <Navbar></Navbar>
+      <h1>Search Groceries:</h1>
       <SearchBar handleAddGrocery={handleAddGroceries}></SearchBar>
       <h1>Grocery List:</h1>
       <div className='grocery-container'>
