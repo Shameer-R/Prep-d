@@ -3,7 +3,6 @@ import placeholder from './imgs/placeholder.png'
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
-// Navbar component
 function Navbar() {
   return (
       <div className='navbar-container'>
@@ -63,7 +62,7 @@ function AddGroceriesPage({ groceries, handleAddGroceries }) {
       </div>
     </>
   );
-} // <-- closing brace was missing here
+}
 
 function FindMealsPage() {
   return <h1>Find Meals Page (coming soon)</h1>;
