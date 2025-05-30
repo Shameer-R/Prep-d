@@ -1,21 +1,23 @@
 import './index.css'
 import placeholder from './imgs/placeholder.png'
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
+// Navbar component
 function Navbar() {
   return (
-    <div className='navbar-container'>
-      <div className='logo'>Prep'd</div>
-      <ul className='navbar-list'>
-        <li>Add Groceries</li>
-        <li>Find Meals</li>
-        <li>Saved Meals</li>
-      </ul>
-      <div className='account-actions'>
-        <span>🔔</span>
-        <span>👤</span>
+      <div className='navbar-container'>
+        <div className='logo'>Prep'd</div>
+        <ul className='navbar-list'>
+          <li><Link to="/">Add Groceries</Link></li>
+          <li><Link to="/find-meals">Find Meals</Link></li>
+          <li><Link to="/saved-meals">Saved Meals</Link></li>
+        </ul>
+        <div className='account-actions'>
+          <span>🔔</span>
+          <span>👤</span>
+        </div>
       </div>
-    </div>
   );
 }
 
@@ -46,6 +48,29 @@ function GroceryCard(prop) {
       <p>{prop.grocery_name}</p>
     </div>
   );
+}
+
+function AddGroceriesPage({ groceries, handleAddGroceries }) {
+  return (
+    <>
+      <h1>Search Groceries:</h1>
+      <SearchBar handleAddGrocery={handleAddGroceries} />
+      <h1>Grocery List:</h1>
+      <div className='grocery-container'>
+        {groceries.map((item) => (
+          <GroceryCard key={item.grocery_name} grocery_name={item.grocery_name} />
+        ))}
+      </div>
+    </>
+  );
+} // <-- closing brace was missing here
+
+function FindMealsPage() {
+  return <h1>Find Meals Page (coming soon)</h1>;
+}
+
+function SavedMealsPage() {
+  return <h1>Saved Meals Page (coming soon)</h1>;
 }
 
 export default function App() {
@@ -85,19 +110,15 @@ export default function App() {
   }
 
   return (
-    <div className='main-container'>
-      <Navbar />
-      <h1>Search Groceries:</h1>
-      <SearchBar handleAddGrocery={handleAddGroceries} />
-      <h1>Grocery List:</h1>
-      <div className='grocery-container'>
-        {groceries.map((item) => (
-          <GroceryCard
-            key={item.grocery_name}
-            grocery_name={item.grocery_name}
-          />
-        ))}
+    <Router>
+      <div className='main-container'>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<AddGroceriesPage groceries={groceries} handleAddGroceries={handleAddGroceries} />} />
+          <Route path="/find-meals" element={<FindMealsPage />} />
+          <Route path="/saved-meals" element={<SavedMealsPage />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
