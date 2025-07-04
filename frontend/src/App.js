@@ -34,13 +34,18 @@ export default function App() {
       .catch(err => console.error("Error adding to backend:", err));
   }
 
+  function handleMealGeneration() {
+    return fetch("http://127.0.0.1:5000/meals")
+    .then((res) => res.json())
+  }
+
   return (
     <Router>
       <div className='main-container'>
         <Navbar />
         <Routes>
           <Route path='/' element={<AddGroceriesPage groceries={groceries} handleAddGroceries={handleAddGroceries} />} />
-          <Route path='/find-meals' element={<FindMealsPage />} />
+          <Route path='/find-meals' element={<FindMealsPage handleMealGeneration={handleMealGeneration} />} />
           <Route path='/saved-meals' element={<SavedMealsPage />} />
         </Routes>
       </div>

@@ -3,6 +3,7 @@ from flask_cors import CORS
 import json
 from dotenv import load_dotenv
 import os
+import requests
 
 load_dotenv()
 
@@ -20,14 +21,30 @@ def getMealFromRecipe():
 
     request_string = f"{url}?ingredients={ingredient_list}&number=10&apiKey={SPOONACULAR_API_KEY}"
 
-    print(request_string)
+    return request_string
+    
+@app.route('/meals', methods=['GET'])
+def generate_meal():
+    if request.method == 'GET':
+        if not groceries:
+            return jsonify({"error": "No groceries found"}), 400
+        
+        api_url = getMealFromRecipe()
+    
+        response = requests.get(api_url)
+        
+        if response.status_code == 200:
+            data = response.json()
+            return jsonify(data)
+        else:
+            return jsonify({"error": "Failed to fetch recipes"}), response.status_code
+
 
 @app.route('/groceries', methods=['GET', 'POST'])
 def handle_groceries():
     if request.method == 'POST':
         data = request.get_json()
         groceries.append(data)
-        getMealFromRecipe()
         return jsonify({"message": "Added!", "data": data}), 201
     return jsonify(groceries)
 
